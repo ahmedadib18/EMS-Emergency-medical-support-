@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
   <!-- Required meta tags -->
@@ -56,29 +58,41 @@
           
           <li class="nav-item"><a class="nav-link" href="{{route('admincreateambulance')}}"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">AMBULANCE Create</span></a></li>
           <li class="nav-item"><a class="nav-link" href="{{route('editambulance')}}"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">AMBULANCE Edit</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="{{route('adib1')}}"><img class="menu-icon" src="images/menu_icons/01.png" alt="menu icon"><span class="menu-title">logout</span></a></li>
+          
           
           
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="{{route('adib')}}" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">Home Page</span><i class="menu-arrow"></i></a>
           </li>
+                                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+        
           
         </ul>
       </nav>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        <a href="{{route('adib')}}" class="btn btn-primary btn-lg" target="_blank">Visit Main Site</a>
-
-        <div class="col-md-12">
-                            <div class="card" id='map' style='width:100%; height:500px;float:center;
-                            margin-right:0px;margin-left:0px;margin-top:10px;margin-bottom: 10px;'>
-                                    <!--<div >-->
-                                        
-                                    <!--</div>-->
-                            </div>
-            </div>
-          
+         <form action="{{ route('logout') }}" method="post">
+       @csrf
+       <button type="submit">Logout</button>
+</form>
+         
           
           
           
@@ -113,29 +127,12 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async defer></script>
-  <script src="js/maps.js"></script>
+  
   <!-- End custom js for this page-->
 </body>
 
 
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoibXVzaGZpbWFxdmVyaWNrIiwiYSI6ImNqcGw3NXlqbTBiNXo0Mm9iZGc5MzN4Zm0ifQ.vizYESiSkgQLffbqo-k51w';
-    var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [90.474590 ,  23.717851], // starting position [lng, lat] 
 
-    zoom: 14 // starting zoom
-    });
-
-          latitude =23.717851;
-          longitude =90.474590;
-            new mapboxgl.Marker()
-                .setLngLat([90.474590,23.717851]).setPopup(new mapboxgl.Popup().setText(hospital.hospital_name))
-                .addTo(map); 
-    
-</script>
 
 <!-- pop over -->
 

@@ -30,8 +30,8 @@ class AdminController extends Controller
         $hospital->hospital_departments = $request->hospital_departments;
         $hospital->hospital_contact = $request->hospital_contact;
         $hospital->hospital_icu = $request->hospital_icu;
-        $hospital->lat = $request->lat;
-        $hospital->lng = $request->lng;
+       
+      
     
        
         //$hospital->save();

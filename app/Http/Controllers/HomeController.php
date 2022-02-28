@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +29,7 @@ class HomeController extends Controller
     }
     public function logout()
     {
-        return view('home');
+        Auth::logout();
+        return view('index');
     }
 }

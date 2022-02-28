@@ -22,7 +22,7 @@ Route::post('/doctorsearch', 'PagesController@doctorsearch')->name('searchdoc');
 Route::post('/ambulancesearch', 'PagesController@ambulancesearch')->name('searchambulance');
 Route::get('/covid19', 'PagesController@covid19')->name('virus');
 
-Route::get('/admin', 'AdminController@index')->name('admin1');
+//Route::get('/admin', 'AdminController@index')->name('admin1');
 Route::get('/admin/createhospital', 'AdminController@createhospital')->name('admincreate');
 Route::post('/admin/createhospital', 'AdminController@storehospital')->name('storehospital');
 
@@ -58,4 +58,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home1', 'HomeController@logout')->name('adib1');
+Route::post('/index', 'HomeController@logout')->name('logout');
